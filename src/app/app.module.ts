@@ -5,12 +5,15 @@ import {EventsAppComponent} from "./events-app.component";
 import {EventsListComponent} from "./events/events-list.component";
 import {EventThumbnailComponent} from "./events/event-thumbnail.component";
 import {NavbarComponent} from "./nav/navbar.component";
-import {EventService} from "./event.service";
+import {EventService} from "./common/event.service";
 import {ToastrService} from "./common/toastr.service";
 import {EventDetailComponent} from "./events/event-detail/event-detail.component";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "../routes";
 import {CreateEventComponent} from "./events/create-event/create-event.component";
+import {Error404Component} from "./errors/404.component";
+import {EventRouteActivatorService} from "./common/event-route-activator.service";
+import {EventListResolver} from "./common/event-list-resolver";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import {CreateEventComponent} from "./events/create-event/create-event.component
     EventThumbnailComponent,
     NavbarComponent,
     EventDetailComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    Error404Component,
   ],
   imports: [
     BrowserModule,
@@ -27,8 +31,17 @@ import {CreateEventComponent} from "./events/create-event/create-event.component
   ],
   providers: [
     EventService,
-    ToastrService
+    ToastrService,
+    EventRouteActivatorService,
+    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState},
+    EventListResolver
   ],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(component:CreateEventComponent){
+  if (component.isDirty)
+    return window.confirm('You have not saved this event, cancel anyway?');
+  return true;
+}
