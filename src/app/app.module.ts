@@ -27,7 +27,7 @@ import {EventListResolver} from "./common/event-list-resolver";
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     EventService,
