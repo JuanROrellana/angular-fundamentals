@@ -6,10 +6,12 @@ import {EventRouteActivatorService} from "./app/common/event-route-activator.ser
 import {EventListResolver} from "./app/common/event-list-resolver";
 
 import {Routes} from "@angular/router";
+import {SessionCreateComponent} from "./app/events/create-event/session-create/session-create.component";
 
 // @ts-ignore
 export const appRoutes: Routes = [
   { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
+  { path: 'events/sessions/new', component: SessionCreateComponent },
   // before resolving this route call the EventListResolver
   // after resolver finish and returns data
   // send this data to the route as a property named events
