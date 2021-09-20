@@ -15,6 +15,7 @@ import {IEvent, ISession} from "../../models";
 export class EventDetailComponent implements OnInit{
   event: IEvent | null = null;
   public addMode: boolean = false;
+  filterBy: string = 'all';
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {}
 
