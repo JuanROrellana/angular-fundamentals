@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit{
     firstName: new FormControl(this.authService.currentUser?.firstName),
     lastName: new FormControl(this.authService.currentUser?.lastName)
   });
+  
   firstName: FormControl = new FormControl();
   lastName: FormControl= new FormControl();
 
