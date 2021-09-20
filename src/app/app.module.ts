@@ -18,6 +18,7 @@ import {AuthService} from "./user/services/auth.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SessionListComponent} from "./events/create-event/session-list/session-list.component";
 import {SessionCreateComponent} from "./events/create-event/session-create/session-create.component";
+import {CollapsibleWellComponent} from "./common/collapsible-well.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {SessionCreateComponent} from "./events/create-event/session-create/sessi
     CreateEventComponent,
     Error404Component,
     SessionListComponent,
-    SessionCreateComponent
+    SessionCreateComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,
